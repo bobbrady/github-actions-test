@@ -31,3 +31,12 @@ jobs:
       with:
         name: htmlcov
         path: htmlcov/
+    
+    - name: Run Bandit Vulnerability Scan
+      run: bandit -r src/ -o bandit-report.txt
+
+    - name: Upload Bandit Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: bandit-report
+        path: bandit-report.txt
